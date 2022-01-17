@@ -22,6 +22,6 @@
 		
 		<p>${message}</p> <!-- message is a first parameter from request.setAttribute in servlet file -->
 		
-		<a href ="/age">Age Calculator</a>
+		<a href ="age">Age Calculator</a>
 	</body>
 </html>

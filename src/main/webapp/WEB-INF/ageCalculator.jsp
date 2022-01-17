@@ -18,7 +18,7 @@
 		
 		<p>${message}</p> <!-- message is a first parameter from request.setAttribute in servlet file -->
 		
-		<a href ="/arithmetic">Arithmetic Calculator</a>
+		<a href ="arithmetic">Arithmetic Calculator</a>
 	</body>
 </html>
 
