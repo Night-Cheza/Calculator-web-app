@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Ivan&Leila
+ * @author Leila Nalivkina, Nick Hemmet
  */
 public class AgeCalculatorServlet extends HttpServlet {
 	/**
@@ -35,21 +35,20 @@ public class AgeCalculatorServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//age is the name of input type in jsp file
-		if (request.getParameter("age") != null) { 
+		if (request.getParameter("age").isEmpty()) { 
+			request.setAttribute("message", "You must give your current age");			
+		} else  {
 			try {
 				String ageInput = request.getParameter("age");
 				int age = Integer.parseInt(ageInput);
 
 				int ageNextBday = age + 1;
 
-				request.setAttribute("message", "You will be " + ageNextBday + " after your next Birtday");
-			} catch (Exception ex) {
-				request.setAttribute("message", "Invalid age input. Please try again");
+				request.setAttribute("message", "You will be " + ageNextBday + " after your next birtday");
+			} catch (NumberFormatException ex) {
+				request.setAttribute("message", "You must enter a number");
 			}
-		} else {
-			request.setAttribute("message", "Please enter your age");
 		}
-
 		getServletContext().getRequestDispatcher("/WEB-INF/ageCalculator.jsp").forward(request, response);
 	}
 }
